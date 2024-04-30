@@ -1,0 +1,141 @@
+.baner {
+   position: relative;
+  display: inline-block;
+  background-color: black;
+}
+
+#baner-glowny {
+  width: 78vw;
+  max-height: 600px;
+display: flex;
+justify-content: center;
+}
+
+.search-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0%, -50%);
+  max-width: 400px;
+  height: 40%;
+  background-color: rgba(31, 26, 19, 0.62);
+  padding: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.881);
+}
+
+.search-form {
+  height: 120px;
+}
+
+#formularz-glowny {
+  max-height: 100%;
+}
+
+#wybor-marki {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  max-width: 100%;
+font-size: 15px;
+  font-weight: lighter;
+  color: gray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#wybor-modelu {
+  display: block;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.CTA {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  margin-bottom: 50px;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: rgb(151, 40, 40);
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(99, 6, 6);
+  cursor: pointer;
+}
+
+.screen {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+#leftPoz {
+  width: 10%;
+  float: left;
+}
+
+#rightPoz {
+  width: 10%;
+  float: right;
+}
+
+.main-page {
+  display: inline-block;
+  width: 80vw;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.divAuta {
+ width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.img-container {
+  max-width: 25vw;
+  margin-top: 20px;
+  margin-right: 15px;
+  background-color: rgba(220, 207, 124, 0.235);
+  cursor: pointer;
+
+}
+
+.zdjecieAuta {
+  max-width: 25vw;
+
+}
+
+.szczegoly {
+  max-width: auto;
+  margin-left: 10px;
+  font-size:90%;
+
+}
+
+.kafelek {
+  max-width: 30.5%;
+}
+
+.miniaturka {
+  max-width: 25vw;
+  height: auto;
+
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+
+.hidden {
+  display: none;
+}
+

@@ -1,0 +1,120 @@
+.product {
+  width: 80vw;
+  float: left;
+}
+
+.product_picture {
+  width: 100%;
+}
+
+#product-picture {
+  width: 60%;
+  float: left;
+  margin-right: 5%;
+  border: 2px solid black;
+  margin-bottom: 10px;
+}
+
+.product_listing {
+  display: flex;
+  height: 1000px;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.szczegolyAuta {
+  height: auto;
+  display: block;
+  position: relative;
+}
+
+.finansowanie {
+  width: 100%;
+  margin-top: 100px;
+  display: block;
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none;
+}
+
+.accessories {
+  width: 100%;
+  max-height: 80px;
+  display: flex;
+  position: relative;
+}
+
+.radio {
+  margin: 10px;
+  font-size: 16px;
+}
+
+.input {
+  margin: 15px;
+  font-size: 14px;
+  padding: 5px;
+}
+
+#data-dostawy {
+  font-size: 14px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.miniaturkaAkcesorii {
+  margin: 20px;
+  width: 30%;
+  display: inline-block;
+  
+}
+
+.buttony {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  margin: 10%;
+}
+
+.dodajBTN {
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.dodajBTN.changed {
+  background-color: rgb(158, 246, 158);
+  font: bold;
+  font-size: 15px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.zakup {
+  background-color: rgba(39, 39, 170, 0.932);
+  font-size: 20px;
+  border: 3px solid rgba(23, 23, 112, 0.896);
+  color: white;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.cofnij {
+  cursor: pointer;
+}
+
+.kwota{
+  margin-top: 100px;
+  margin-left: 10%;
+}
+
+.error {
+  font-size: 14px;
+  color: red;
+  font-weight: bold;
+}

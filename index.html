@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTu</title>
+<link rel="stylesheet" href="./styles/global.css"/>
+<link rel="stylesheet" href="./styles/main.css"/>
+<link rel="stylesheet" href="./styles/productlisting.css"/>
+<link rel="stylesheet" href="./styles/confirmation.css"/>
+</head>
+<body>
+    <div class="top-bar">
+<img id="logo" src="./assets/AutoTu.png" alt="logo"/>
+    </div>
+   <div class="screen">
+    <div class="side-bar" id="leftPoz"> <p></p></div>
+    <div class="side-bar" id="rightPoz"> <p>
+    </p></div>
+ 
+    <div class="main-page">
+
+    <div class="baner">
+        <img id="baner-glowny" src="./assets/banern.jpg" alt="baner"/>
+
+        <div class="search-form">
+            <form id="formularz-glowny">
+               <!-- <div class ="marka"><input type="text" id="marka" placeholder="Marka"/>
+                
+              
+               </div> -->
+               <select id="wybor-marki">
+                <option class="label-listy"  value="">Wybierz markę samochodu</option>
+              
+               </select>
+
+             
+
+               
+               <button class="CTA" id="szukaj">Szukaj</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="list">
+       
+                <div class="divAuta"></div>
+                 
+</div>
+    </div>
+<div id="details" class = "hidden">
+<div class="product_listing">     
+<div class="product">
+    <div class="szczegolyAuta">
+<div class="product_picture">
+<img class="zdjecieGlowne" id="product-picture"> 
+</div>
+<div class="product_details">
+    <button type="button" class ="cofnij"> Powrót do wyboru</button>
+    <div class="opis">
+
+</div>
+</div>
+</div>
+<div class="finansowanie">
+    <h2> Wybierz formę finansowania:</h2>
+    <form class="form">
+        <input class="radio" type="radio" id="opcja1" name="wybor" value="opcja1">
+        <label for="opcja1">Leasing</label><br>
+        
+        <input class="radio" type="radio" id="opcja2" name="wybor" value="opcja2">
+        <label for="opcja2">Gotówka</label><br>
+    <label> Wpisz swoje dane:
+        <input class="input" type="text"  pattern = "^[^\s]+\s[^\s]+$" placeholder="Imię i nazwisko"></label>
+        <p>
+        <label> Wybierz datę dostawy: 
+        <select id="data-dostawy" name="data-dostawy">
+            
+          </select></label></p>
+    </form>
+    
+</div>
+</div>
+
+<h2> Akcesoria</h2>
+<div class="accessories">
+
+</div>
+</div>
+<div class="suma">
+    <h2 class="kwota"> Łączna kwota: </h2>
+
+</div>
+
+
+<div class="buttony">
+   
+    <button class="zakup" type="button">Zakup</button>
+</div>
+</div>
+
+<div id="success" class="hidden">
+
+   
+    </div>
+
+
+
+</div>
+</div>
+
+<script src="./scripts/script.js"></script>
+</body>
+</html>

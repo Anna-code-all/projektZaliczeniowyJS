@@ -1,0 +1,22 @@
+.imgSuccess {
+    display: inline-block;
+    width: 40vw;
+    position: fixed;
+   left: 50%;
+   transform: translate(-10%,-80%);
+   margin-top: 0%;
+}
+
+.podziekowanie {
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.opisSukces {
+display: inline-block;
+margin-left: 10%;
+max-width:40vw;
+margin-top: 20px;
+
+
+}
