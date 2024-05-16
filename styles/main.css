@@ -1,5 +1,5 @@
 .baner {
-   position: relative;
+  position: relative;
   display: inline-block;
   background-color: black;
 }
@@ -7,8 +7,8 @@
 #baner-glowny {
   width: 78vw;
   max-height: 600px;
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .search-form {
@@ -36,7 +36,7 @@ justify-content: center;
   margin-top: 20px;
   margin-bottom: 25px;
   max-width: 100%;
-font-size: 15px;
+  font-size: 15px;
   font-weight: lighter;
   color: gray;
   padding-top: 5px;
@@ -91,10 +91,9 @@ font-size: 15px;
   padding: 0;
 }
 .divAuta {
- width: 90vw;
+  width: 90vw;
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .img-container {
@@ -103,19 +102,16 @@ font-size: 15px;
   margin-right: 15px;
   background-color: rgba(220, 207, 124, 0.235);
   cursor: pointer;
-
 }
 
 .zdjecieAuta {
   max-width: 25vw;
-
 }
 
 .szczegoly {
   max-width: auto;
   margin-left: 10px;
-  font-size:90%;
-
+  font-size: 90%;
 }
 
 .kafelek {
@@ -125,7 +121,6 @@ font-size: 15px;
 .miniaturka {
   max-width: 25vw;
   height: auto;
-
 }
 
 .list {
@@ -134,8 +129,6 @@ font-size: 15px;
   width: 100%;
 }
 
-
 .hidden {
   display: none;
 }
-
