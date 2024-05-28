@@ -43,22 +43,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const brandChoice = document.querySelector("#wybor-marki");
-  const wyborModelu = document.querySelector("#wybor-modelu");
-  const markaAutaSprawdzenieWyboru = document.querySelectorAll(
-    ".markaAutaSprawdzenieWyboru"
-  );
-  let markaAuta;
 
-  const carsDetails = document.querySelectorAll(".szczegoly");
+  let carsBrand;
+const uniqueBrands = new Set();
+  //const carsDetails = document.querySelectorAll(".szczegoly");
 
-  for (let i = 0; i < auta.length; i = i + 2) {
-    markaAuta = document.createElement("option");
-    markaAuta.classList.add("markaAutaSprawdzenieWyboru");
-    markaAuta.textContent = `${auta[i].marka}`;
+  for (let i = 0; i < auta.length; i++) {
 
-    if (!brandChoice.querySelector(`option[value="${auta[i].marka}"]`)) {
-      brandChoice.appendChild(markaAuta);
-    }
+    const existingBrand = auta[i].marka;
+
+    if(!uniqueBrands.has(existingBrand)) {
+      uniqueBrands.add(existingBrand);
+   carsBrand = document.createElement("option");
+    
+    carsBrand.textContent = existingBrand;
+carsBrand.value=existingBrand;
+brandChoice.appendChild(carsBrand);
+   }
   }
 
   const search = document.querySelector("#szukaj");
