@@ -7,65 +7,65 @@ document.addEventListener("DOMContentLoaded", function () {
   const divAuta = document.querySelector(".divAuta");
 
   for (let i = 0; i < auta.length; i++) {
-    const zdjecieAuta = document.createElement("div");
-    zdjecieAuta.classList.add("img-container");
+    const carsPhoto = document.createElement("div");
+    carsPhoto.classList.add("img-container");
 
     const img = document.createElement("img");
     img.src = auta[i].obraz;
     img.classList.add("miniaturka");
-    zdjecieAuta.appendChild(img);
-    divAuta.appendChild(zdjecieAuta);
+    carsPhoto.appendChild(img);
+    divAuta.appendChild(carsPhoto);
 
     const autoDetails = document.createElement("div");
     autoDetails.classList.add("szczegoly");
-    zdjecieAuta.appendChild(autoDetails);
-    const pozycja = document.createElement("p");
-    pozycja.textContent = `${[i]}`;
-    const marka = document.createElement("h3");
-    marka.textContent = `Marka: ${auta[i].marka}`;
+    carsPhoto.appendChild(autoDetails);
+    const position = document.createElement("p");
+    position.textContent = `${[i]}`;
+    const brand = document.createElement("h3");
+    brand.textContent = `Marka: ${auta[i].marka}`;
     const model = document.createElement("h2");
     model.textContent = `Model: ${auta[i].model}`;
-    const rocznik = document.createElement("p");
-    rocznik.textContent = `Rocznik: ${auta[i].rocznik}`;
-    const mocSilnika = document.createElement("p");
-    mocSilnika.textContent = `Moc silnika: ${auta[i].moc_silnika}`;
-    const przebieg = document.createElement("p");
-    przebieg.textContent = `Przebieg: ${auta[i].przebieg}`;
-    const cena = document.createElement("h4");
-    const sformatowanaCena = auta[i].cena.toLocaleString().replace(",", " ");
-    cena.textContent = `Cena: ${sformatowanaCena} PLN`;
-    autoDetails.appendChild(marka);
+    const modelYear = document.createElement("p");
+    modelYear.textContent = `Rocznik: ${auta[i].rocznik}`;
+    const power = document.createElement("p");
+    power.textContent = `Moc silnika: ${auta[i].moc_silnika}`;
+    const mileage = document.createElement("p");
+    mileage.textContent = `Przebieg: ${auta[i].przebieg}`;
+    const price = document.createElement("h4");
+    const formatPrice = auta[i].cena.toLocaleString().replace(",", " ");
+    price.textContent = `Cena: ${formatPrice} PLN`;
+    autoDetails.appendChild(brand);
     autoDetails.appendChild(model);
-    autoDetails.appendChild(rocznik);
-    autoDetails.appendChild(mocSilnika);
-    autoDetails.appendChild(przebieg);
-    autoDetails.appendChild(cena);
+    autoDetails.appendChild(modelYear);
+    autoDetails.appendChild(power);
+    autoDetails.appendChild(mileage);
+    autoDetails.appendChild(price);
   }
 
-  const wyborMarki = document.querySelector("#wybor-marki");
+  const brandChoice = document.querySelector("#wybor-marki");
   const wyborModelu = document.querySelector("#wybor-modelu");
   const markaAutaSprawdzenieWyboru = document.querySelectorAll(
     ".markaAutaSprawdzenieWyboru"
   );
   let markaAuta;
 
-  const szczegoly = document.querySelectorAll(".szczegoly");
+  const carsDetails = document.querySelectorAll(".szczegoly");
 
   for (let i = 0; i < auta.length; i = i + 2) {
     markaAuta = document.createElement("option");
     markaAuta.classList.add("markaAutaSprawdzenieWyboru");
     markaAuta.textContent = `${auta[i].marka}`;
 
-    if (!wyborMarki.querySelector(`option[value="${auta[i].marka}"]`)) {
-      wyborMarki.appendChild(markaAuta);
+    if (!brandChoice.querySelector(`option[value="${auta[i].marka}"]`)) {
+      brandChoice.appendChild(markaAuta);
     }
   }
 
-  const szukaj = document.querySelector("#szukaj");
-  szukaj.addEventListener("click", function () {
-    const wybranaMarka = wyborMarki.value;
+  const search = document.querySelector("#szukaj");
+  search.addEventListener("click", function () {
+    const chosenBrand = brandChoice.value;
     szcz.forEach((kafel) => {
-      if (kafel.textContent.trim().includes(wybranaMarka)) {
+      if (kafel.textContent.trim().includes(chosenBrand)) {
         kafel.style.display = "block";
       } else {
         kafel.style.display = "none";
@@ -73,91 +73,91 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  const kafel = document.querySelectorAll(".img-container");
+  const carsTile = document.querySelectorAll(".img-container");
   const mainPage = document.querySelector(".main-page");
-  const kartaProduktu = document.querySelector("#details");
+  const productPage = document.querySelector("#details");
   const productPicture = document.querySelector(".product_picture");
-  const zdjecieGlowne = document.querySelector(".zdjecieGlowne");
-  const opis = document.querySelector(".opis");
+  const mainImg = document.querySelector(".zdjecieGlowne");
+  const description = document.querySelector(".opis");
 
-  kafel.forEach((kafel, index) => {
+  carsTile.forEach((kafel, index) => {
     kafel.addEventListener("click", function () {
       mainPage.classList.add("hidden");
-      kartaProduktu.classList.remove("hidden");
+      productPage.classList.remove("hidden");
 
-      const obraz = auta[index].obraz;
-      zdjecieGlowne.src = obraz;
-      productPicture.appendChild(zdjecieGlowne);
-      const formatCena = auta[index].cena.toLocaleString().replace(",", " ");
+      const picture = auta[index].obraz;
+      mainImg.src = picture;
+      productPicture.appendChild(mainImg);
+      const formatPrices = auta[index].cena.toLocaleString().replace(",", " ");
 
-      opis.innerHTML = `
+      description.innerHTML = `
 <h3> Marka: ${auta[index].marka}</h3>
 <h2> Model: ${auta[index].model}</h2>
 <p> Rocznik: ${auta[index].rocznik}</p>
 <p> Moc silnika: ${auta[index].moc_silnika}</p>
 <p> Przebieg: ${auta[index].przebieg}</p>
-<h2> Cena: ${formatCena} PLN </h2> 
+<h2> Cena: ${formatPrices} PLN </h2> 
 `;
 
-      const dataDostawy = document.querySelector("#data-dostawy");
+      const deliveryDate = document.querySelector("#data-dostawy");
 
-      dataDostawy.addEventListener("click", function () {
-        const dzisiaj = new Date();
+      deliveryDate.addEventListener("click", function () {
+        const todayDate = new Date();
 
         for (let i = 0; i < 14; i++) {
-          const data = new Date(dzisiaj);
-          data.setDate(dzisiaj.getDate() + i);
+          const date = new Date(todayDate);
+          date.setDate(todayDate.getDate() + i);
 
           const option = document.createElement("option");
-          option.value = data.toISOString();
-          option.textContent = data.toLocaleDateString();
+          option.value = date.toISOString();
+          option.textContent = date.toLocaleDateString();
 
-          dataDostawy.appendChild(option);
+          deliveryDate.appendChild(option);
         }
       });
 
-      const cofnij = document.querySelector(".cofnij");
+      const undo = document.querySelector(".cofnij");
 
       const allAccessories = document.querySelector(".accessories");
 
       allAccessories.innerHTML = "";
 
       for (let i = 0; i < akcesoria.length; i++) {
-        const akcesoriaDoAuta = document.createElement("div");
-        akcesoriaDoAuta.classList.add("img-accessories");
+        const carsAccessories = document.createElement("div");
+        carsAccessories.classList.add("img-accessories");
 
         const imgAcc = document.createElement("img");
         imgAcc.src = akcesoria[i].obraz;
         imgAcc.classList.add("miniaturkaAkcesorii");
-        akcesoriaDoAuta.appendChild(imgAcc);
-        allAccessories.appendChild(akcesoriaDoAuta);
+        carsAccessories.appendChild(imgAcc);
+        allAccessories.appendChild(carsAccessories);
 
-        const marka = document.createElement("p");
-        marka.textContent = `${akcesoria[i].marka}`;
-        const nazwa = document.createElement("h4");
-        nazwa.textContent = `${akcesoria[i].nazwa}`;
+        const accessoriesBrand = document.createElement("p");
+        accessoriesBrand.textContent = `${akcesoria[i].marka}`;
+        const accessoriesName = document.createElement("h4");
+        accessoriesName.textContent = `${akcesoria[i].nazwa}`;
 
-        const cena = document.createElement("h5");
-        const sformatowanaCena = akcesoria[i].cena
+        const accessoriesPrice = document.createElement("h5");
+        const accessoriesFormatedPrice = akcesoria[i].cena
           .toLocaleString()
           .replace(",", " ");
-        cena.textContent = `Cena: ${sformatowanaCena} PLN`;
+        accessoriesPrice.textContent = `Cena: ${accessoriesFormatedPrice} PLN`;
 
-        const dodaj = document.createElement("button");
-        dodaj.textContent = "Dodaj";
-        dodaj.classList.add("dodajBTN");
+        const addButton = document.createElement("button");
+        addButton.textContent = "Dodaj";
+        addButton.classList.add("dodajBTN");
 
-        akcesoriaDoAuta.appendChild(nazwa);
-        akcesoriaDoAuta.appendChild(marka);
-        akcesoriaDoAuta.appendChild(cena);
-        akcesoriaDoAuta.appendChild(dodaj);
+        carsAccessories.appendChild(accessoriesName);
+        carsAccessories.appendChild(accessoriesBrand);
+        carsAccessories.appendChild(accessoriesPrice);
+        carsAccessories.appendChild(addButton);
 
-        allAccessories.appendChild(akcesoriaDoAuta);
+        allAccessories.appendChild(carsAccessories);
       }
 
-      cofnij.addEventListener("click", function () {
+      undo.addEventListener("click", function () {
         mainPage.classList.remove("hidden");
-        kartaProduktu.classList.add("hidden");
+        productPage.classList.add("hidden");
         if (error) {
           error.innerHTML = "";
           error.remove();
@@ -166,12 +166,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let suma = auta[index].cena;
 
-      const dodajButtons = document.querySelectorAll(".dodajBTN");
+      const addButtons = document.querySelectorAll(".dodajBTN");
 
-      const kwota = document.querySelector(".kwota");
-      kwota.innerHTML = `Łączna kwota: ${suma} PLN`;
+      const totalAmount = document.querySelector(".kwota");
+      totalAmount.innerHTML = `Łączna kwota: ${suma} PLN`;
 
-      dodajButtons.forEach((button, i) => {
+      addButtons.forEach((button, i) => {
         button.addEventListener("click", function () {
           if (button.textContent === "Dodaj") {
             button.textContent = "Dodane 👍";
@@ -179,14 +179,14 @@ document.addEventListener("DOMContentLoaded", function () {
             suma =
               suma +
               (button.classList.contains("changed") ? akcesoria[i].cena : 0);
-            kwota.innerHTML = `Łączna kwota: ${suma} PLN`;
+            totalAmount.innerHTML = `Łączna kwota: ${suma} PLN`;
           } else {
-            const dodanyDodatek = button.classList.contains("changed");
+            const addedAccessories = button.classList.contains("changed");
             button.textContent = "Dodaj";
             button.classList.remove("changed");
-            if (dodanyDodatek) {
+            if (addedAccessories) {
               suma = suma - akcesoria[i].cena;
-              kwota.innerHTML = `Łączna kwota: ${suma} PLN`;
+              totalAmount.innerHTML = `Łączna kwota: ${suma} PLN`;
             }
           }
         });
@@ -194,21 +194,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let error = document.querySelector(".error");
 
-      const opcja1 = document.querySelector("#opcja1");
-      const opcja2 = document.querySelector("#opcja2");
+      const option1 = document.querySelector("#opcja1");
+      const option2 = document.querySelector("#opcja2");
 
-      const zakup = document.querySelector(".zakup");
+      const purchase = document.querySelector(".zakup");
       const success = document.querySelector("#success");
       const form = document.querySelector(".form");
-      const imieNazwisko = document.querySelector(".input");
+      const nameSurname = document.querySelector(".input");
 
-      zakup.addEventListener("click", function () {
+      purchase.addEventListener("click", function () {
         if (
-          imieNazwisko.checkValidity() &&
-          (opcja1.checked || opcja2.checked) &&
-          dataDostawy.value !== ""
+          nameSurname.checkValidity() &&
+          (option1.checked || option2.checked) &&
+          deliveryDate.value !== ""
         ) {
-          kartaProduktu.classList.add("hidden");
+          productPage.classList.add("hidden");
           success.classList.remove("hidden");
           success.innerHTML = "";
           const headline = document.createElement("h2");
@@ -216,36 +216,36 @@ document.addEventListener("DOMContentLoaded", function () {
           headline.textContent = "Dziękujemy za zakup auta";
           success.appendChild(headline);
 
-          const opisSukces = document.createElement("div");
-          opisSukces.classList.add("opisSukces");
-          success.appendChild(opisSukces);
-          const pierwszaLinia = document.createElement("h3");
-          pierwszaLinia.textContent = `Wybrany model:${auta[index].marka} ${auta[index].model}`;
-          opisSukces.appendChild(pierwszaLinia);
+          const successDescription = document.createElement("div");
+          successDescription.classList.add("opisSukces");
+          success.appendChild(successDescription);
+          const firstLine = document.createElement("h3");
+          firstLine.textContent = `Wybrany model:${auta[index].marka} ${auta[index].model}`;
+          successDescription.appendChild(firstLine);
 
-          const zdjecieAutaSukcesDiv = document.createElement("div");
-          const zdjecieAutaSukces = document.createElement("img");
-          zdjecieAutaSukces.src = obraz;
-          zdjecieAutaSukces.classList.add("imgSuccess");
-          success.appendChild(zdjecieAutaSukcesDiv);
-          zdjecieAutaSukcesDiv.appendChild(zdjecieAutaSukces);
+          const succesPageCarImage = document.createElement("div");
+          const succesCarImage = document.createElement("img");
+          succesCarImage.src = picture;
+          succesCarImage.classList.add("imgSuccess");
+          success.appendChild(succesPageCarImage);
+          succesPageCarImage.appendChild(succesCarImage);
           let dataSukces = document.createElement("p");
           dataSukces.textContent = `Data dostawy: ${
-            dataDostawy.value.split("T")[0]
+            deliveryDate.value.split("T")[0]
           }`;
-          opisSukces.appendChild(dataSukces);
-          const cenaSukces = document.createElement("p");
-          cenaSukces.textContent = kwota.textContent;
-          opisSukces.appendChild(cenaSukces);
-          const formaPlatnosciSukces = document.createElement("p");
-          if (opcja1.checked) {
-            formaPlatnosciSukces.textContent =
+          successDescription.appendChild(dataSukces);
+          const succesTotalAmount = document.createElement("p");
+          succesTotalAmount.textContent = totalAmount.textContent;
+          successDescription.appendChild(succesTotalAmount);
+          const succesPaymentMethod = document.createElement("p");
+          if (option1.checked) {
+            succesPaymentMethod.textContent =
               "Wybrana forma płatności: leasing";
           } else {
-            formaPlatnosciSukces.textContent =
+            succesPaymentMethod.textContent =
               "Wybrana forma płatności: gotówka";
           }
-          opisSukces.appendChild(formaPlatnosciSukces);
+          successDescription.appendChild(succesPaymentMethod);
         } else {
           if (!error) {
             error = document.createElement("div");
