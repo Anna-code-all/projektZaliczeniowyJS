@@ -1,4 +1,4 @@
-const akcesoria = [
+const accessories = [
   {
     poz: 1,
     obraz: "assets/opony.jpg",
@@ -22,4 +22,4 @@ const akcesoria = [
   },
 ];
 
-export default akcesoria;
+export default accessories;

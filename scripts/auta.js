@@ -1,4 +1,4 @@
-const auta = [
+const cars = [
   {
     poz: 1,
     obraz: "assets/Mazda6.jpg",
@@ -101,4 +101,4 @@ const auta = [
   },
 ];
 
-export default auta;
+export default cars;

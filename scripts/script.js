@@ -1,17 +1,17 @@
 "use strict";
 
-import auta from "./auta.js";
-import akcesoria from "./akcesoria.js";
+import cars from "./auta.js";
+import accessories from "./akcesoria.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const divAuta = document.querySelector(".divAuta");
 
-  for (let i = 0; i < auta.length; i++) {
+  for (let i = 0; i < cars.length; i++) {
     const carsPhoto = document.createElement("div");
     carsPhoto.classList.add("img-container");
 
     const img = document.createElement("img");
-    img.src = auta[i].obraz;
+    img.src = cars[i].obraz;
     img.classList.add("miniaturka");
     carsPhoto.appendChild(img);
     divAuta.appendChild(carsPhoto);
@@ -22,17 +22,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const position = document.createElement("p");
     position.textContent = `${[i]}`;
     const brand = document.createElement("h3");
-    brand.textContent = `Marka: ${auta[i].marka}`;
+    brand.textContent = `Marka: ${cars[i].marka}`;
     const model = document.createElement("h2");
-    model.textContent = `Model: ${auta[i].model}`;
+    model.textContent = `Model: ${cars[i].model}`;
     const modelYear = document.createElement("p");
-    modelYear.textContent = `Rocznik: ${auta[i].rocznik}`;
+    modelYear.textContent = `Rocznik: ${cars[i].rocznik}`;
     const power = document.createElement("p");
-    power.textContent = `Moc silnika: ${auta[i].moc_silnika}`;
+    power.textContent = `Moc silnika: ${cars[i].moc_silnika}`;
     const mileage = document.createElement("p");
-    mileage.textContent = `Przebieg: ${auta[i].przebieg}`;
+    mileage.textContent = `Przebieg: ${cars[i].przebieg}`;
     const price = document.createElement("h4");
-    const formatPrice = auta[i].cena.toLocaleString().replace(",", " ");
+    const formatPrice = cars[i].cena.toLocaleString().replace(",", " ");
     price.textContent = `Cena: ${formatPrice} PLN`;
     autoDetails.appendChild(brand);
     autoDetails.appendChild(model);
@@ -45,21 +45,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const brandChoice = document.querySelector("#wybor-marki");
 
   let carsBrand;
-const uniqueBrands = new Set();
+  const uniqueBrands = new Set();
   //const carsDetails = document.querySelectorAll(".szczegoly");
 
-  for (let i = 0; i < auta.length; i++) {
+  for (let i = 0; i < cars.length; i++) {
+    const existingBrand = cars[i].marka;
 
-    const existingBrand = auta[i].marka;
-
-    if(!uniqueBrands.has(existingBrand)) {
+    if (!uniqueBrands.has(existingBrand)) {
       uniqueBrands.add(existingBrand);
-   carsBrand = document.createElement("option");
-    
-    carsBrand.textContent = existingBrand;
-carsBrand.value=existingBrand;
-brandChoice.appendChild(carsBrand);
-   }
+      carsBrand = document.createElement("option");
+
+      carsBrand.textContent = existingBrand;
+      carsBrand.value = existingBrand;
+      brandChoice.appendChild(carsBrand);
+    }
   }
 
   const search = document.querySelector("#szukaj");
@@ -86,36 +85,34 @@ brandChoice.appendChild(carsBrand);
       mainPage.classList.add("hidden");
       productPage.classList.remove("hidden");
 
-      const picture = auta[index].obraz;
+      const picture = cars[index].obraz;
       mainImg.src = picture;
       productPicture.appendChild(mainImg);
-      const formatPrices = auta[index].cena.toLocaleString().replace(",", " ");
+      const formatPrices = cars[index].cena.toLocaleString().replace(",", " ");
 
       description.innerHTML = `
-<h3> Marka: ${auta[index].marka}</h3>
-<h2> Model: ${auta[index].model}</h2>
-<p> Rocznik: ${auta[index].rocznik}</p>
-<p> Moc silnika: ${auta[index].moc_silnika}</p>
-<p> Przebieg: ${auta[index].przebieg}</p>
+<h3> Marka: ${cars[index].marka}</h3>
+<h2> Model: ${cars[index].model}</h2>
+<p> Rocznik: ${cars[index].rocznik}</p>
+<p> Moc silnika: ${cars[index].moc_silnika}</p>
+<p> Przebieg: ${cars[index].przebieg}</p>
 <h2> Cena: ${formatPrices} PLN </h2> 
 `;
 
       const deliveryDate = document.querySelector("#data-dostawy");
 
-      deliveryDate.addEventListener("click", function () {
-        const todayDate = new Date();
+      const todayDate = new Date();
 
-        for (let i = 0; i < 14; i++) {
-          const date = new Date(todayDate);
-          date.setDate(todayDate.getDate() + i);
+      for (let i = 0; i < 14; i++) {
+        const date = new Date(todayDate);
+        date.setDate(todayDate.getDate() + i);
 
-          const option = document.createElement("option");
-          option.value = date.toISOString();
-          option.textContent = date.toLocaleDateString();
+        const option = document.createElement("option");
+        option.value = date.toISOString();
+        option.textContent = date.toLocaleDateString();
 
-          deliveryDate.appendChild(option);
-        }
-      });
+        deliveryDate.appendChild(option);
+      }
 
       const undo = document.querySelector(".cofnij");
 
@@ -123,23 +120,23 @@ brandChoice.appendChild(carsBrand);
 
       allAccessories.innerHTML = "";
 
-      for (let i = 0; i < akcesoria.length; i++) {
+      for (let i = 0; i < accessories.length; i++) {
         const carsAccessories = document.createElement("div");
         carsAccessories.classList.add("img-accessories");
 
         const imgAcc = document.createElement("img");
-        imgAcc.src = akcesoria[i].obraz;
+        imgAcc.src = accessories[i].obraz;
         imgAcc.classList.add("miniaturkaAkcesorii");
         carsAccessories.appendChild(imgAcc);
         allAccessories.appendChild(carsAccessories);
 
         const accessoriesBrand = document.createElement("p");
-        accessoriesBrand.textContent = `${akcesoria[i].marka}`;
+        accessoriesBrand.textContent = `${accessories[i].marka}`;
         const accessoriesName = document.createElement("h4");
-        accessoriesName.textContent = `${akcesoria[i].nazwa}`;
+        accessoriesName.textContent = `${accessories[i].nazwa}`;
 
         const accessoriesPrice = document.createElement("h5");
-        const accessoriesFormatedPrice = akcesoria[i].cena
+        const accessoriesFormatedPrice = accessories[i].cena
           .toLocaleString()
           .replace(",", " ");
         accessoriesPrice.textContent = `Cena: ${accessoriesFormatedPrice} PLN`;
@@ -165,7 +162,7 @@ brandChoice.appendChild(carsBrand);
         }
       });
 
-      let suma = auta[index].cena;
+      let suma = cars[index].cena;
 
       const addButtons = document.querySelectorAll(".dodajBTN");
 
@@ -179,14 +176,14 @@ brandChoice.appendChild(carsBrand);
             button.classList.add("changed");
             suma =
               suma +
-              (button.classList.contains("changed") ? akcesoria[i].cena : 0);
+              (button.classList.contains("changed") ? accessories[i].cena : 0);
             totalAmount.innerHTML = `Łączna kwota: ${suma} PLN`;
           } else {
             const addedAccessories = button.classList.contains("changed");
             button.textContent = "Dodaj";
             button.classList.remove("changed");
             if (addedAccessories) {
-              suma = suma - akcesoria[i].cena;
+              suma = suma - accessories[i].cena;
               totalAmount.innerHTML = `Łączna kwota: ${suma} PLN`;
             }
           }
@@ -221,7 +218,7 @@ brandChoice.appendChild(carsBrand);
           successDescription.classList.add("opisSukces");
           success.appendChild(successDescription);
           const firstLine = document.createElement("h3");
-          firstLine.textContent = `Wybrany model:${auta[index].marka} ${auta[index].model}`;
+          firstLine.textContent = `Wybrany model:${cars[index].marka} ${cars[index].model}`;
           successDescription.appendChild(firstLine);
 
           const succesPageCarImage = document.createElement("div");
