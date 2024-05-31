@@ -61,14 +61,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  const search = document.querySelector("#szukaj");
-  search.addEventListener("click", function () {
-    const chosenBrand = brandChoice.value;
-    szcz.forEach((kafel) => {
-      if (kafel.textContent.trim().includes(chosenBrand)) {
-        kafel.style.display = "block";
+  const searchButton = document.querySelector("#szukaj");
+  searchButton.addEventListener("click", function () {
+    const chosenBrand = carsBrand.value;
+    const autoDetailsContainers = document.querySelectorAll(".szczegoly");
+    autoDetailsContainers.forEach((container) => {
+      const containerBrand = container
+        .querySelector("h3")
+        .textContent.split(": ")[1];
+      if (containerBrand === chosenBrand) {
+        container.style.display = "block";
+        console.log("pokazują się");
       } else {
-        kafel.style.display = "none";
+        container.style.display = "none";
+        console.log("nie pokazują się");
       }
     });
   });
@@ -249,11 +255,56 @@ document.addEventListener("DOMContentLoaded", function () {
             error = document.createElement("div");
             error.classList.add("error");
             const errorMessege = document.createElement("p");
-            errorMessege.textContent = "Uzupełnij dane w formularzu";
+            if (
+              (option1.checked || option2.checked) &&
+              !nameSurname.checkValidity()
+            ) {
+              errorMessege.textContent = "Uzupełnij imię i nazwisko";
+            }
+            if (
+              !(option1.checked || option2.checked) &&
+              !nameSurname.checkValidity()
+            ) {
+              errorMessege.textContent =
+                "Zaznacz formę finansowania i uzupełnij imię i nazwisko";
+            }
+            if (
+              !(option1.checked || option2.checked) &&
+              nameSurname.checkValidity()
+            ) {
+              errorMessege.textContent = "Zaznacz formę finansowania";
+            }
             form.appendChild(error);
             error.appendChild(errorMessege);
           } else {
-            console.log("komunikat już istnieje");
+            if (error) {
+              error.parentNode.removeChild(error);
+              error = document.createElement("div");
+              error.classList.add("error");
+              const errorMessege = document.createElement("p");
+              if (
+                (option1.checked || option2.checked) &&
+                !nameSurname.checkValidity()
+              ) {
+                errorMessege.textContent = "Uzupełnij imię i nazwisko";
+              }
+              if (
+                !(option1.checked || option2.checked) &&
+                !nameSurname.checkValidity()
+              ) {
+                errorMessege.textContent =
+                  "Zaznacz formę finansowania i uzupełnij imię i nazwisko";
+              }
+              if (
+                !(option1.checked || option2.checked) &&
+                nameSurname.checkValidity()
+              ) {
+                errorMessege.textContent = "Zaznacz formę finansowania";
+              }
+              form.appendChild(error);
+              error.appendChild(errorMessege);
+              console.log("komunikat został zaktualizowany");
+            }
           }
         }
       });
